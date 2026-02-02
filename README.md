@@ -1,84 +1,16 @@
-# Air Trackpad 🖐️💻
+Air Trackpad – Vision-Based Cursor Control System
 
-Air Trackpad is a computer vision–based gesture control system that transforms hand gestures into trackpad-like actions such as cursor movement, clicking, scrolling, zooming, and drag-and-drop using a standard webcam. It enables completely touchless interaction without any external hardware.
+This project implements a vision-based mid-air cursor control system using real-time hand tracking as an alternative to traditional input devices. The system supports smooth cursor movement with configurable dead zones, acceleration, and motion smoothing to reduce jitter and fatigue. Single-click interaction is implemented using dwell-based confirmation with visual feedback, allowing reliable selection without physical buttons. Two-finger scrolling is supported with velocity smoothing and inertia, enabling controlled and natural scrolling behavior, while zoom control is handled through vertical hand motion with dwell-based intent detection and throttling to prevent accidental zooming. The interaction design prioritizes stability and predictability, allowing the system to be used for extended periods rather than short demonstrations. Mode separation between cursor movement, scrolling, and zooming ensures that gestures do not interfere with each other, reducing accidental input and improving overall usability.
 
----
+Development and Design Process
 
-## 🚀 Features & Gesture Controls
+The project was developed through iterative prototyping and hands-on testing, with a strong focus on identifying and resolving real usability issues rather than maximizing feature count. Multiple gesture-based approaches, including pinch-based clicking, posture-based activation, and double-click emulation, were implemented and deliberately removed after testing revealed problems such as cursor instability, unintended actions, user fatigue, and conflicts with operating system behavior. Parameters such as smoothing, dwell timing, dead zones, and inertia were repeatedly tuned based on observed behavior. The final system reflects conscious design trade-offs, emphasizing interaction reliability and user experience while acknowledging the practical limitations of mid-air human–computer interaction.
 
-### 🖱️ Cursor Movement
-- The system tracks the position of the user’s index finger in real time.
-- Cursor movement is mapped proportionally to finger motion.
-- Smoothing techniques are applied to reduce jitter and improve stability.
+How to Run
+	1.	Clone the repository and navigate to the project directory.
+	2.	Create and activate a Python virtual environment.
+	3.	Install the required dependencies (OpenCV, MediaPipe, PyAutoGUI).
+	4.	Run the main script: python hand_detect.py
+Press q to exit the application.
 
-**Gesture:**  
-👉 Move index finger in the air to control the cursor.
-
----
-
-### 👆 Click (Visual Feedback Enabled)
-- A left click is triggered when the distance between the **thumb and index finger** falls below a defined threshold.
-- A **full green circle** appears on the screen to visually confirm the click action.
-
-**Gesture:**  
-🤏 Bring thumb and index finger together.
-
-**Visual Indicator:**  
-🟢 Green circle → Click detected
-
----
-
-### 📜 Scrolling (Visual Feedback Enabled)
-- Scrolling is controlled using two fingers (index and middle finger).
-- Vertical finger movement is translated into scroll up/down actions.
-- A **blue circular indicator** appears while scrolling is active.
-
-**Gesture:**  
-✌️ Move index + middle finger up/down.
-
-**Visual Indicator:**  
-🔵 Blue circle → Scrolling active
-
----
-
-### 🔍 Zoom In / Zoom Out
-- Zooming is controlled using the **left hand’s vertical movement**.
-- Moving the left hand **upwards** triggers zoom in.
-- Moving the left hand **downwards** triggers zoom out.
-- This allows intuitive zoom control similar to touch-based pinch gestures.
-
-**Gesture:**  
-✋ Left hand up → Zoom In  
-✋ Left hand down → Zoom Out
-
----
-
-### ✋ Drag and Drop
-- Drag mode is activated by holding the pinch gesture (thumb + index finger).
-- While the pinch is held, cursor movement drags the selected object.
-- Releasing the pinch drops the object at the target location.
-
-**Gesture:**  
-🤏 Hold pinch → move → release
-
----
-
-### ⚡ Real-Time Performance
-- Built using MediaPipe hand landmarks for accurate detection.
-- Optimized for low-latency, real-time interaction.
-
----
-
-## 🛠 Tech Stack
-- **Python**
-- **OpenCV** – video capture, rendering, and visual feedback
-- **MediaPipe** – real-time hand landmark detection
-
----
-
-## ▶️ How to Run
-
-1. Clone the repository:
-```bash
-git clone https://github.com/Aditya-Patiyal/air-trackpad.git
-cd air-trackpad
+Note: The project was tested on macOS. Cursor control permissions may need to be enabled in system accessibility settings for mouse control to function correctly.
